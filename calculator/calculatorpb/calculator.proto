@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "calculatorpb";
+
+message SumRequest {
+    int32 first_number = 1;
+    int32 second_number = 2;
+}
+
+message SumResponse {
+    int32 sum_result = 1;
+}
+
+message PrimeNumberDescompositionRequest {
+    int64 number = 1;
+}
+
+message PrimeNumberDescompositionResponse {
+    int64 prime_factor = 1;
+}
+
+service CalculatorService {
+    rpc Sum(SumRequest) returns (SumResponse) {};
+
+    rpc PrimeNumberDescomposition (PrimeNumberDescompositionRequest) returns (stream PrimeNumberDescompositionResponse) {};
+}
